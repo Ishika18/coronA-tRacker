@@ -33,7 +33,6 @@ app.get('/', (req, res) => {
                 console.log(`average daily cases over the last week: ${cases}`)
                 let updateText = `new cases today: ${json.data[json.data.length - 1].change_cases}; active cases today: ${activeCases(json.data[json.data.length - 1])}; average daily cases over the last week: ${cases}`
                 metadataController.changeText(updateText)
-                fetch(endpoint + updateText)
 
                 let trend = activeCases(json.data[json.data.length - 1]) / cases
                 ratio = 0.2 // base ratio
