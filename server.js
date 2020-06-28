@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     date.setDate(date.getDate() - 7)
     let formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     let uri = endpoint + formattedDate
-    cron.schedule('00***', () => {
+    setTimeout(function() {
         fetch(uri)
             .then(res => res.json())
             .then(json => {
@@ -43,11 +43,11 @@ app.get('/', (req, res) => {
             .catch(err => {
                 console.log(err)
             })
-            function activeCases(summary) {
-                let cases = summary.total_cases - summary.total_fatalities - summary.total_recoveries
-                return cases
-            }
-    })
+    }, 86400000)
+    function activeCases(summary) {
+        let cases = summary.total_cases - summary.total_fatalities - summary.total_recoveries
+        return cases
+    }
     res.render("trackers/home")
 })
 
