@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 
-app.get('/update', (req, res) => {
+app.get('/', (req, res) => {
     let endpoint = "https://api.covid19tracker.ca/reports?fill_dates=true&after="
     let date = new Date()
     date.setDate(date.getDate() - 7)
