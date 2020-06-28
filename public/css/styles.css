@@ -1,44 +1,72 @@
 #qr-code {
-   width: 100%;
+    width: 100%;
 }
 
 li {
-   font-size: 1.3em;
+    font-size: 1.3em;
 }
+
 #logoIcon {
-   align-self: center;
-   width: 50%;
-   left: 25%;
-   padding: 2%;
+    align-self: center;
+    width: 50%;
+    left: 25%;
+    padding: 2%;
 }
 
 #topbar {
-   background-color: #a6dcef;
+    background-color: #a6dcef;
 }
 
 body {
-   background-color: #ecfbfc;
-   overflow-x: hidden;
+    background-color: #ecfbfc;
+    overflow-x: hidden;
 }
 
 @media only screen and (max-width: 600px) {
-   #logoIcon {
-      align-self: center;
-      margin-top: 8%;
-      width: 70%;
-      left: 15%;
-      margin-bottom: 0;
-      padding-bottom: 0;
-   }
-   #topbar {
-      background-color: #ecfbfc;
-   }
-   #info {
-      padding: 8% 8% 0% 8%;
-      margin-top: 0em !important;
-   }   
-   #qr-code {
-      width: 100%;
-      margin: auto;
-   }
+    #logoIcon {
+        align-self: center;
+        margin-top: 8%;
+        width: 70%;
+        left: 15%;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    #topbar {
+        background-color: #ecfbfc;
+    }
+    #info {
+        padding: 8% 8% 0% 8%;
+        margin-top: 0em !important;
+    }
+    #qr-code {
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 1024px) {
+    #qr-code {
+        width: 70%;
+        margin-left: 17%;
+        text-align: center;
+    }
+    #launchPageItems {
+        flex-basis: 70%!important;
+        min-width: 100%;
+    }
+    #info {
+        min-width: 100%;
+        padding: 10%;
+        margin-top: 0em !important;
+    }
+    #topbar {
+        background-color: #ecfbfc;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 800px) {
+    #qr-code {
+        width: 50%;
+        margin-left: 23%;
+    }
 }
