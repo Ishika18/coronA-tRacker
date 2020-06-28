@@ -25,8 +25,10 @@ app.get('/update', (req, res) => {
         console.log(`average daily cases over the last week: ${cases}`)
         let key = "YOUR_KEY_HERE"
         let endpoint = "https://console.echoar.xyz/post?key=" + key + "&entry=e5772384-6b0f-4c79-a2fd-ee4b49ac427a&data=text&value="
-        let updateText = `new cases today: ${json.data[json.data.length -1].change_cases}, active cases today: ${activeCases(json.data[json.data.length -1])}, average daily cases over the last week: ${cases}`
+        let updateText = `new cases today: ${json.data[json.data.length -1].change_cases}; active cases today: ${activeCases(json.data[json.data.length -1])}; average daily cases over the last week: ${cases}`
         fetch(endpoint+updateText)
+        
+        let trend = activeCases(json.data[json.data.length -1])/cases
     })
 
     function activeCases(summary){
