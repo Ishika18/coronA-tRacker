@@ -13,12 +13,12 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    let endpoint = "https://api.covid19tracker.ca/reports?fill_dates=true&after="
-    let date = new Date()
-    date.setDate(date.getDate() - 7)
-    let formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-    let uri = endpoint + formattedDate
-    setTimeout(function() {
+    setTimeout(function () {
+        let endpoint = "https://api.covid19tracker.ca/reports?fill_dates=true&after="
+        let date = new Date()
+        date.setDate(date.getDate() - 7)
+        let formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+        let uri = endpoint + formattedDate
         fetch(uri)
             .then(res => res.json())
             .then(json => {
@@ -42,11 +42,11 @@ app.get('/', (req, res) => {
             .catch(err => {
                 console.log(err)
             })
+        function activeCases(summary) {
+            let cases = summary.total_cases - summary.total_fatalities - summary.total_recoveries
+            return cases
+        }
     }, 86400000)
-    function activeCases(summary) {
-        let cases = summary.total_cases - summary.total_fatalities - summary.total_recoveries
-        return cases
-    }
     res.render("trackers/home")
 })
 
