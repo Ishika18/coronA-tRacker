@@ -3,8 +3,17 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 const metadataController = require('./controllers/metadataController')
+const ejsLayouts = require('express-ejs-layouts');
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use(ejsLayouts)
+app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({extended: true}));
+
+
+app.set('view engine', 'ejs');
+
+
+app.get('/', (req, res) => res.render("trackers/home"))
 
 app.get('/update', (req, res) => {
     let endpoint = "https://api.covid19tracker.ca/reports?fill_dates=true&after="
@@ -40,7 +49,7 @@ app.get('/update', (req, res) => {
         let cases = summary.total_cases - summary.total_fatalities - summary.total_recoveries
         return cases
     }
-    res.send('Hello World!')
+    res.send('Data is up to date!')
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
