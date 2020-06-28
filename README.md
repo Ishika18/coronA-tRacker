@@ -4,8 +4,8 @@
 1. Install dependencies ```npm install```
 2. Make an account with echoAR and get api key
 3. Upload virus.glb to echoAR cloud
-4. Add api key to line 5, 12 of controllers/metaController.js
-5. Add the entry ( of 3d image ) to line 6, 13 of controller/metaController.js
+4. Add api key to line 5, 12, 19 of controllers/metaController.js
+5. Add the entry ( of 3d image ) to line 6, 13, 20 of controller/metaController.js
 5. Run ```node server.js```
 
 # How does it work ?
