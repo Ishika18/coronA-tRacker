@@ -4,7 +4,6 @@ const app = express()
 const port = process.env.PORT || 3000
 const metadataController = require('./controllers/metadataController')
 const ejsLayouts = require('express-ejs-layouts');
-const cron = require('node-cron');
 
 app.use(ejsLayouts)
 app.use(express.static(__dirname + "/public"));
