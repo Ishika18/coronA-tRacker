@@ -38,6 +38,12 @@ app.get('/', (req, res) => {
                 let trend = activeCases(json.data[json.data.length - 1]) / cases
                 ratio = 0.2 // base ratio
                 metadataController.changeScale(ratio * trend)
+                if ((ratio * trend) > 2.4) {
+                    metadataController.changeColor("Red")
+                }
+                else {
+                    metadataController.changeColor("Green")
+                }
             })
             .catch(err => {
                 console.log(err)
