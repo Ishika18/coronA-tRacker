@@ -24,14 +24,16 @@ app.get('/update', (req, res) => {
         }
         cases /= json.data.length + 1
         console.log(`average daily cases over the last week: ${cases}`)
-        let key = "YOUR_KEY_HERE"
-        let endpoint = "https://console.echoar.xyz/post?key=" + key + "&entry=e5772384-6b0f-4c79-a2fd-ee4b49ac427a&data=text&value="
         let updateText = `new cases today: ${json.data[json.data.length -1].change_cases}; active cases today: ${activeCases(json.data[json.data.length -1])}; average daily cases over the last week: ${cases}`
+        metadataController.changeText(updateText)
         fetch(endpoint+updateText)
         
-        let trend = activeCases(json.data[json.data.length -1])/cases
-        ratio = 0.001 // example purpose
-        metadataController.changeScale(ratio)
+        let trend = activeCases(json.data[json.data.length -1])/(cases * 10)
+        ratio = 0.2 // base ratio
+        metadataController.changeScale(ratio * trend )
+    })
+    .catch(err => {
+        console.log(err)
     })
 
     function activeCases(summary){
@@ -41,5 +43,4 @@ app.get('/update', (req, res) => {
     res.send('Hello World!')
 })
 
-metadataController.changeScale(0.2)
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
