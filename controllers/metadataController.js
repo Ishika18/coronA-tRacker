@@ -13,7 +13,7 @@ metadataController = {
         let endpoint = "https://console.echoar.xyz/post?key=" + key + "&entry=e5772384-6b0f-4c79-a2fd-ee4b49ac427a&data=text&value="
         let updateText = newText
         fetch(endpoint+updateText)
-    }
+    },
 }
 
 module.exports = metadataController
